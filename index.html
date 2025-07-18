@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meister - Distribuidora de Películas de Proteção</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Biblioteca AOS para animações -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#672929',
+            'primary-light': '#852e2f',
+            'primary-dark': '#4d1d1d',
+            accent: '#5f6060',
+            'accent-light': '#818283',
+            text: '#2a2a2a',
+            'text-light': '#5f6060',
+            'text-lighter': '#9e9e9e',
+            bg: '#ffffff',
+            'bg-light': '#f9f9f9',
+            'bg-dark': '#f0f0f0',
+            whatsapp: '#25D366',
+            facebook: '#1877F2',
+            instagram: '#E4405F',
+            linkedin: '#0A66C2',
+            success: '#3a8a5c',
+            warning: '#e67e22',
+            error: '#c0392b'
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif']
+          },
+          animation: {
+            'bounce-slow': 'bounce 3s infinite',
+            'pulse-slow': 'pulse 3s infinite'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="font-sans bg-bg scroll-smooth">
+  <!-- Header Fixo -->
+  <header class="fixed w-full top-0 z-50 bg-bg-light shadow-md py-1">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="/" class="text-3xl font-bold text-text">
+        <img src="Imagens/logo.png" alt="Meister" class="h-20 transition duration-300 hover:opacity-90">
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8">
+          <li><a href="#inicio" class="text-primary hover:text-accent font-semibold transition duration-300">Início</a>
+          </li>
+          <li><a href="#produtos"
+              class="text-text-light hover:text-accent font-semibold transition duration-300">Produtos</a></li>
+          <li><a href="#sobre" class="text-text-light hover:text-accent font-semibold transition duration-300">Sobre</a>
+          </li>
+          <li><a href="#contato"
+              class="text-text-light hover:text-accent font-semibold transition duration-300">Contato</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão Mobile -->
+      <button id="menuButton" class="md:hidden text-primary hover:text-accent transition duration-300">
+        <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobileMenu"
+      class="hidden md:hidden fixed top-20 right-0 bottom-0 w-2/5 bg-bg-light shadow-lg border-l border-gray-200 overflow-y-auto">
+      <ul class="flex flex-col space-y-3 p-4">
+        <li><a href="#inicio"
+            class="block py-2 px-3 text-text hover:text-accent font-semibold rounded hover:bg-gray-100">Início</a></li>
+        <li><a href="#produtos"
+            class="block py-2 px-3 text-text hover:text-accent font-semibold rounded hover:bg-gray-100">Produtos</a>
+        </li>
+        <li><a href="#sobre"
+            class="block py-2 px-3 text-text hover:text-accent font-semibold rounded hover:bg-gray-100">Sobre</a></li>
+        <li><a href="#contato"
+            class="block py-2 px-3 text-text hover:text-accent font-semibold rounded hover:bg-gray-100">Contato</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+
+    menuButton.addEventListener('click', () => {
+      // Alternar visibilidade do menu
+      mobileMenu.classList.toggle('hidden');
+
+      // Alternar ícone
+      if (mobileMenu.classList.contains('hidden')) {
+        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+      } else {
+        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+      }
+    });
+  </script>
+
+  <!-- Espaço para o header fixo -->
+  <div class="pt-24"></div>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="bg-gradient-to-r from-primary to-primary-light text-white py-20 overflow-hidden">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="800">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          Distribuidora Autorizada de Películas Premium
+        </h1>
+        <p class="text-xl mb-8 max-w-2xl opacity-90">
+          Fornecemos películas Solense (com exclusividade para o Norte Catarinense) e Nexfil - as melhores opções para
+          sua loja ou oficina de instalação.
+        </p>
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+          <a href="https://wa.me/554792732923"
+            class="bg-white hover:bg-bg-light text-primary font-bold py-3 px-6 rounded-lg text-center transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+            Solicite um Orçamento
+          </a>
+        </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+        <img src="Imagens/logo_principal.png" alt="Película de proteção solar"
+          class="rounded-lg shadow-xl max-w-full h-auto transform hover:scale-105 transition duration-500" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Produtos Section -->
+  <section id="produtos" class="py-16 bg-bg-light">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-primary mb-4" data-aos="fade-up">
+        Nossas Linhas de Produtos
+      </h2>
+      <p class="text-center text-text-light mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        Distribuímos as melhores marcas de películas do mercado, com exclusividade da Solense para o Norte de Santa
+        Catarina
+      </p>
+
+      <!-- Marca Solense -->
+      <div class="mb-16">
+        <div class="flex flex-col items-center justify-center mb-8" data-aos="fade-up"> <!-- Alterado para flex-col -->
+          <img src="Imagens/solense.svg" alt="Solense" class="h-40 transition duration-500 hover:scale-105">
+          <span
+            class="mt-2 bg-primary/10 text-primary-dark text-sm font-medium px-3 py-1 rounded-full transform transition duration-300 hover:scale-110">
+            Exclusividade Regional
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <!-- Produto 1 -->
+          <div
+            class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition duration-500 border border-bg-dark transform hover:-translate-y-2"
+            data-aos="zoom-in" data-aos-delay="100">
+            <div class="p-6">
+              <div
+                class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto transition duration-300 group-hover:bg-primary/20">
+                <svg class="w-8 h-8 text-primary transition duration-300 group-hover:scale-110" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                  </path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-semibold text-center text-text group-hover:text-primary mb-2 transition duration-300">
+                Películas Automotivas
+              </h3>
+              <p class="text-sm text-text-light text-center mb-4">
+                Linha completa para veículos
+              </p>
+              <a href="https://www.solense.com/services/controle-solar-automotiva/"
+                class="text-primary-light block text-center font-medium hover:text-primary transition duration-300 transform hover:translate-x-1">
+                Saiba mais <i class="fas fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Produto 2 -->
+          <div
+            class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition duration-500 border border-bg-dark transform hover:-translate-y-2"
+            data-aos="zoom-in" data-aos-delay="150">
+            <div class="p-6">
+              <div
+                class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto transition duration-300 group-hover:bg-primary/20">
+                <svg class="w-8 h-8 text-primary transition duration-300 group-hover:scale-110" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                  </path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-semibold text-center text-text group-hover:text-primary mb-2 transition duration-300">
+                Arquitetura
+              </h3>
+              <p class="text-sm text-text-light text-center mb-4">
+                Soluções para vidros residenciais e comerciais
+              </p>
+              <a href="https://www.solense.com/services/peliculas-de-arquitetura/"
+                class="text-primary-light block text-center font-medium hover:text-primary transition duration-300 transform hover:translate-x-1">
+                Saiba mais <i class="fas fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Produto 3 -->
+          <div
+            class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition duration-500 border border-bg-dark transform hover:-translate-y-2"
+            data-aos="zoom-in" data-aos-delay="200">
+            <div class="p-6">
+              <div
+                class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto transition duration-300 group-hover:bg-primary/20">
+                <svg class="w-8 h-8 text-primary transition duration-300 group-hover:scale-110" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                  </path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-semibold text-center text-text group-hover:text-primary mb-2 transition duration-300">
+                PPF
+              </h3>
+              <p class="text-sm text-text-light text-center mb-4">
+                Proteção para pintura automotiva
+              </p>
+              <a href="https://www.solense.com/services/protecao-de-superficie-ppf/"
+                class="text-primary-light block text-center font-medium hover:text-primary transition duration-300 transform hover:translate-x-1">
+                Saiba mais <i class="fas fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Produto 4 -->
+          <div
+            class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition duration-500 border border-bg-dark transform hover:-translate-y-2"
+            data-aos="zoom-in" data-aos-delay="250">
+            <div class="p-6">
+              <div
+                class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto transition duration-300 group-hover:bg-primary/20">
+                <svg class="w-8 h-8 text-primary transition duration-300 group-hover:scale-110" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-semibold text-center text-text group-hover:text-primary mb-2 transition duration-300">
+                Proteção para Para-brisas
+              </h3>
+              <p class="text-sm text-text-light text-center mb-4">
+                Camada externa de proteção
+              </p>
+              <a href="https://www.solense.com/services/protecao-para-brisa-windshield/"
+                class="text-primary-light block text-center font-medium hover:text-primary transition duration-300 transform hover:translate-x-1">
+                Saiba mais <i class="fas fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Produto 5 -->
+          <div
+            class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition duration-500 border border-bg-dark transform hover:-translate-y-2"
+            data-aos="zoom-in" data-aos-delay="300">
+            <div class="p-6">
+              <div
+                class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto transition duration-300 group-hover:bg-primary/20">
+                <svg class="w-8 h-8 text-primary transition duration-300 group-hover:scale-110" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                  </path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-semibold text-center text-text group-hover:text-primary mb-2 transition duration-300">
+                Películas de Segurança
+              </h3>
+              <p class="text-sm text-text-light text-center mb-4">
+                Resistência e proteção contra quebras
+              </p>
+              <a href="https://www.solense.com/services/peliculas-de-seguranca/"
+                class="text-primary-light block text-center font-medium hover:text-primary transition duration-300 transform hover:translate-x-1">
+                Saiba mais <i class="fas fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marca Nexfil -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Seção Nexfil -->
+        <div
+          class="bg-white rounded-lg shadow-sm hover:shadow-md p-8 text-center border border-bg-dark transition duration-500 transform hover:-translate-y-1"
+          data-aos="fade-right">
+          <div class="flex items-center justify-center mb-8">
+            <img src="Imagens/nexfil.svg" alt="Nexfil" class="h-40 transition duration-500 hover:scale-105">
+          </div>
+          <div
+            class="bg-primary/10 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto transition duration-300 hover:bg-primary/20">
+            <svg class="w-10 h-10 text-primary transition duration-300 hover:scale-110" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text mb-4">
+            Produtos Nexfil
+          </h3>
+          <p class="text-text-light mb-6">
+            Para informações técnicas e comercialização dos produtos Nexfil, entre em contato com nosso time de vendas.
+          </p>
+          <a href="#contato"
+            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-whatsapp hover:bg-green-700 transition duration-300 transform hover:scale-105">
+            <svg class="-ml-1 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+              </path>
+            </svg>
+            Falar com vendas
+          </a>
+        </div>
+
+        <!-- Seção Ferramentas de Aplicação -->
+        <div
+          class="bg-white rounded-lg shadow-sm hover:shadow-md p-8 text-center border border-bg-dark transition duration-500 transform hover:-translate-y-1"
+          data-aos="fade-left">
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div
+            class="bg-primary/10 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto transition duration-300 hover:bg-primary/20">
+            <svg class="w-10 h-10 text-primary transition duration-300 hover:scale-110" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+              </path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text mb-4">
+            Ferramentas de Aplicação
+          </h3>
+          <p class="text-text-light mb-6">
+            Conheça nossos equipamentos e ferramentas profissionais para aplicação de películas.
+          </p>
+          <br>
+          <br>
+          <br>
+          <br>
+     
+          <a href="https://wa.me/c/554792732923" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-whatsapp hover:bg-green-700 transition duration-300 transform hover:scale-105">
+            <svg class="-ml-1 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+              </path>
+            </svg>
+            Catálogo no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre Section -->
+  <section id="sobre" class="py-16 bg-bg relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('Imagens/preenchimento.webp')] bg-cover bg-center opacity-10"></div>
+    <div class="container mx-auto px-4 relative">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8" data-aos="fade-right">
+          <img src="Imagens/logo.png" alt="Equipe Meister"
+            class="rounded-lg shadow-lg w-full transform hover:rotate-1 transition duration-500" />
+        </div>
+        <div class="md:w-1/2" data-aos="fade-left" data-aos-delay="200">
+          <h2 class="text-3xl font-bold text-primary mb-6">
+            Sobre a Meister
+          </h2>
+          <p class="text-text mb-4">
+            A Meister é uma distribuidora especializada em películas de
+            proteção solar, com mais de 10 anos de experiência no mercado.
+          </p>
+          <p class="text-text mb-4">
+            Nossa missão é fornecer produtos de alta qualidade que combinem
+            proteção, conforto e estilo, atendendo às necessidades de clientes
+            residenciais, comerciais e automotivos.
+          </p>
+          <p class="text-text mb-6">
+            Trabalhamos apenas com marcas reconhecidas internacionalmente,
+            garantindo a satisfação e segurança de nossos clientes.
+          </p>
+          <div class="flex space-x-4">
+            <div
+              class="bg-bg-light p-4 rounded-lg shadow-md text-center flex-1 transform transition duration-300 hover:-translate-y-1">
+              <span class="text-2xl font-bold text-primary block">5+</span>
+              <span class="text-text-light">Anos no mercado</span>
+            </div>
+            <div
+              class="bg-bg-light p-4 rounded-lg shadow-md text-center flex-1 transform transition duration-300 hover:-translate-y-1">
+              <span class="text-2xl font-bold text-primary block">200+</span>
+              <span class="text-text-light">Clientes atendidos</span>
+            </div>
+            <div
+              class="bg-bg-light p-4 rounded-lg shadow-md text-center flex-1 transform transition duration-300 hover:-translate-y-1">
+              <span class="text-2xl font-bold text-primary block">2</span>
+              <span class="text-text-light">Marcas premium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato Section -->
+  <section id="contato" class="py-16 bg-bg-light">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-primary mb-12" data-aos="fade-down">
+        Entre em Contato
+      </h2>
+      <div class="flex flex-col md:flex-row" data-aos="fade-up">
+        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+          <h3 class="text-xl font-semibold text-primary mb-4">
+            Informações de Contato
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start transform transition duration-300 hover:translate-x-2">
+              <div class="text-accent mr-3 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">Telefone</h4>
+                <p class="text-text-light">+55 47 9273-2923</p>
+              </div>
+            </div>
+            <div class="flex items-start transform transition duration-300 hover:translate-x-2">
+              <div class="text-accent mr-3 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">E-mail</h4>
+                <p class="text-text-light">contato@meisterpeliculas.com.br</p>
+              </div>
+            </div>
+            <div class="flex items-start transform transition duration-300 hover:translate-x-2">
+              <div class="text-accent mr-3 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">Endereço</h4>
+                <p class="text-text-light">
+                  Rua Arco Íris - 294 - Iririú<br />JOINVILLE/SC - CEP
+                  89227-130
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-primary mb-4">
+              Horário de Funcionamento
+            </h3>
+            <div class="bg-bg p-4 rounded-lg shadow-sm">
+              <div class="flex justify-between py-2 border-b border-bg-dark">
+                <span class="text-text">Segunda a Sexta</span>
+                <span class="font-medium text-text">08:00 - 12:00 / 13:30 - 18:00</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+
+          <div
+            class="bg-bg p-8 rounded-lg shadow-md w-full max-w-md transform transition duration-500 hover:shadow-lg text-center">
+            <br>
+            <br>
+            <h3 class="text-2xl font-semibold text-primary mb-6">
+              Entre em contato conosco
+            </h3>
+            <p class="text-text mb-8">
+              Estamos disponíveis no WhatsApp para tirar suas dúvidas, fornecer informações detalhadas sobre nossos
+              produtos ou preparar um orçamento personalizado para você.
+            </p>
+
+            <div class="flex justify-center">
+              <a href="https://wa.me/554792732923" target="_blank" rel="noopener noreferrer"
+                class="bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-8 rounded-lg inline-flex items-center transition duration-300 transform hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="white">
+                  <path
+                    d="M 12 2 C 6.5 2 2 6.5 2 12 C 2 13.8 2.5007813 15.5 3.3007812 17 L 2 22 L 7.1992188 20.800781 C 8.6992188 21.600781 10.3 22 12 22 C 17.5 22 22 17.5 22 12 C 22 9.3 20.999609 6.8003906 19.099609 4.9003906 C 17.199609 3.0003906 14.7 2 12 2 z M 12 4 C 14.1 4 16.099219 4.8007813 17.699219 6.3007812 C 19.199219 7.9007813 20 9.9 20 12 C 20 16.4 16.4 20 12 20 C 10.7 20 9.2992188 19.7 8.1992188 19 L 7.5 18.599609 L 6.8007812 18.800781 L 4.8007812 19.300781 L 5.3007812 17.5 L 5.5 16.699219 L 5.0996094 16 C 4.3996094 14.8 4 13.4 4 12 C 4 7.6 7.6 4 12 4 z M 8.5 7.4003906 C 8.3 7.4003906 8.0007812 7.3992188 7.8007812 7.6992188 C 7.5007813 7.9992188 6.9003906 8.6007813 6.9003906 9.8007812 C 6.9003906 11.000781 7.8003906 12.200391 7.9003906 12.400391 C 8.1003906 12.600391 9.6992188 15.199219 12.199219 16.199219 C 14.299219 16.999219 14.699219 16.800781 15.199219 16.800781 C 15.699219 16.700781 16.700391 16.199609 16.900391 15.599609 C 17.100391 14.999609 17.099219 14.499219 17.199219 14.199219 C 17.099219 14.099219 16.999219 14.000391 16.699219 13.900391 C 16.499219 13.800391 15.3 13.199609 15 13.099609 C 14.7 12.999609 14.600391 12.899219 14.400391 13.199219 C 14.200391 13.499219 13.699609 13.999219 13.599609 14.199219 C 13.499609 14.399219 13.399609 14.400781 13.099609 14.300781 C 12.899609 14.200781 12.099609 13.999609 11.099609 13.099609 C 10.299609 12.499609 9.7992187 11.700391 9.6992188 11.400391 C 9.4992187 11.200391 9.7007813 11.000391 9.8007812 10.900391 L 10.199219 10.5 C 10.299219 10.4 10.300391 10.199609 10.400391 10.099609 C 10.500391 9.9996094 10.500391 9.8992188 10.400391 9.6992188 C 10.300391 9.4992187 9.7996094 8.3007812 9.5996094 7.8007812 C 9.3996094 7.4007812 9.2 7.4003906 9 7.4003906 L 8.5 7.4003906 z" />
+                </svg>
+                Fale conosco no WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+  </section>
+
+
+
+  <!-- Mapa Section -->
+  <section class="bg-bg">
+    <div class="container mx-auto px-4 py-8">
+      <h3 class="text-xl font-semibold text-primary mb-4 text-center" data-aos="fade-up">
+        Nossa Localização
+      </h3>
+      <div class="rounded-lg overflow-hidden shadow-lg transform transition duration-500 hover:shadow-xl"
+        data-aos="zoom-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.5472876455037!2d-48.82981692376442!3d-26.27635246691784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deb1d857c83d4b%3A0xc834d881bd72bbdf!2sR.%20Arco-%C3%8Dris%2C%20294%20-%20Iriri%C3%BA%2C%20Joinville%20-%20SC%2C%2089227-130!5e0!3m2!1spt-BR!2sbr!4v1752622523351!5m2!1spt-BR!2sb"
+          width="100%" height="400" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="bg-primary py-12 text-white transform transition duration-500 hover:bg-primary-dark">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-start mb-8">
+        <div class="mb-6 md:mb-0 md:w-1/3" data-aos="fade-up">
+          <a href="/" class="text-3xl font-bold">
+            <img src="Imagens/logo_footer.svg" alt="Meister" class="h-20 transition duration-300 hover:opacity-90">
+          </a>
+          <p class="text-gray-300 mt-2">
+            Distribuidora especializada em películas de proteção solar
+          </p>
+        </div>
+
+        <div class="md:w-2/3 flex justify-end">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div data-aos="fade-up" data-aos-delay="100">
+              <h4 class="text-gray-300 font-semibold mb-3">Contato</h4>
+              <ul class="space-y-3 text-gray-400">
+                <li class="flex items-center">
+                  <i class="fas fa-phone-alt mr-3 text-gray-300"></i>
+                  (47) 9273-2923
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-envelope mr-3 text-gray-300"></i>
+                  <!--E-MAIL-->
+                </li>
+              </ul>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200">
+              <h4 class="text-gray-300 font-semibold mb-3">Redes Sociais</h4>
+              <div class="flex space-x-5 text-xl">
+                <a href="https://wa.me/554792732923"
+                  class="text-gray-400 hover:text-white transition-all transform hover:scale-125">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/meister_peliculas?igsh=OGxoaTMzaG53N3A1"
+                  class="text-gray-400 hover:text-white transition-all transform hover:scale-125">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 pt-6 text-center text-gray-300 text-sm" data-aos="fade-up">
+        <p>© 2025 Meister Películas de Controle Solar. Todos os direitos reservados.</p>
+        <div class="mt-2 flex justify-center space-x-6">
+          <button onclick="document.getElementById('privacyModal').classList.remove('hidden')"
+            class="hover:text-white transition-all underline">
+            Política de privacidade
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal de Política de Privacidade -->
+  <div id="privacyModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div class="bg-white text-gray-800 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold">Política de Privacidade</h3>
+          <button onclick="document.getElementById('privacyModal').classList.add('hidden')"
+            class="text-gray-500 hover:text-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="prose">
+          <!-- Conteúdo da política de privacidade aqui -->
+          <p>Esta é a política de privacidade da Meister Películas. Aqui descrevemos como coletamos, usamos e protegemos
+            suas informações.</p>
+
+          <h4 class="font-semibold mt-4">1. Informações coletadas</h4>
+          <p>Coletamos informações quando você preenche formulários em nosso site ou entra em contato conosco.</p>
+
+          <h4 class="font-semibold mt-4">2. Uso das informações</h4>
+          <p>Suas informações são usadas para responder solicitações e melhorar nossos serviços.</p>
+
+          <h4 class="font-semibold mt-4">3. Proteção de dados</h4>
+          <p>Implementamos medidas de segurança para proteger suas informações pessoais.</p>
+
+          <h4 class="font-semibold mt-4">4. Cookies</h4>
+          <p>Nosso site pode usar cookies para melhorar a experiência do usuário.</p>
+        </div>
+        <div class="mt-6 text-right">
+          <button onclick="document.getElementById('privacyModal').classList.add('hidden')"
+            class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fechar modal ao clicar fora do conteúdo
+    document.getElementById('privacyModal').addEventListener('click', function (e) {
+      if (e.target === this) {
+        this.classList.add('hidden');
+      }
+    });
+  </script>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/554792732923" target="_blank" rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 bg-whatsapp text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-50 animate-bounce-slow">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="white">
+      <path
+        d="M 12 2 C 6.5 2 2 6.5 2 12 C 2 13.8 2.5007813 15.5 3.3007812 17 L 2 22 L 7.1992188 20.800781 C 8.6992188 21.600781 10.3 22 12 22 C 17.5 22 22 17.5 22 12 C 22 9.3 20.999609 6.8003906 19.099609 4.9003906 C 17.199609 3.0003906 14.7 2 12 2 z M 12 4 C 14.1 4 16.099219 4.8007813 17.699219 6.3007812 C 19.199219 7.9007813 20 9.9 20 12 C 20 16.4 16.4 20 12 20 C 10.7 20 9.2992188 19.7 8.1992188 19 L 7.5 18.599609 L 6.8007812 18.800781 L 4.8007812 19.300781 L 5.3007812 17.5 L 5.5 16.699219 L 5.0996094 16 C 4.3996094 14.8 4 13.4 4 12 C 4 7.6 7.6 4 12 4 z M 8.5 7.4003906 C 8.3 7.4003906 8.0007812 7.3992188 7.8007812 7.6992188 C 7.5007813 7.9992188 6.9003906 8.6007813 6.9003906 9.8007812 C 6.9003906 11.000781 7.8003906 12.200391 7.9003906 12.400391 C 8.1003906 12.600391 9.6992188 15.199219 12.199219 16.199219 C 14.299219 16.999219 14.699219 16.800781 15.199219 16.800781 C 15.699219 16.700781 16.700391 16.199609 16.900391 15.599609 C 17.100391 14.999609 17.099219 14.499219 17.199219 14.199219 C 17.099219 14.099219 16.999219 14.000391 16.699219 13.900391 C 16.499219 13.800391 15.3 13.199609 15 13.099609 C 14.7 12.999609 14.600391 12.899219 14.400391 13.199219 C 14.200391 13.499219 13.699609 13.999219 13.599609 14.199219 C 13.499609 14.399219 13.399609 14.400781 13.099609 14.300781 C 12.899609 14.200781 12.099609 13.999609 11.099609 13.099609 C 10.299609 12.499609 9.7992187 11.700391 9.6992188 11.400391 C 9.4992187 11.200391 9.7007813 11.000391 9.8007812 10.900391 L 10.199219 10.5 C 10.299219 10.4 10.300391 10.199609 10.400391 10.099609 C 10.500391 9.9996094 10.500391 9.8992188 10.400391 9.6992188 C 10.300391 9.4992187 9.7996094 8.3007812 9.5996094 7.8007812 C 9.3996094 7.4007812 9.2 7.4003906 9 7.4003906 L 8.5 7.4003906 z" />
+    </svg>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Inicializa AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out'
+    });
+  </script>
+</body>
+
+</html>
